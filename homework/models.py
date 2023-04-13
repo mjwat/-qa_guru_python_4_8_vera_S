@@ -70,7 +70,7 @@ class Cart:
         Если quantity больше, чем количество продуктов в позиции, то удаляется вся позиция
         """
         if self.check_product_in_cart(product):
-            if quantity is None or quantity > self.products[product]:
+            if quantity is None or quantity >= self.products[product]:
                 del self.products[product]
             else:
                 self.products[product] -= quantity

@@ -81,18 +81,20 @@ class TestCart:
                                             f"{cart.products[product]}. Expected: 2"
 
         cart.remove_product(product, 2)
-        assert cart.products[product] == 0, f"Unexpected product quantity after removing: " \
-                                            f"{cart.products[product]}. Expected: 0"
+        assert product not in cart.products, f"Product '{product.name}' " \
+                                             f"was not removed from cart as expected."
 
         cart.products[product] = 5
 
         cart.remove_product(product, 6)
-        assert cart.check_product_in_cart(product) is False, f"Product {product} was not removed from cart as expected."
+        assert product not in cart.products, f"Product '{product.name}' " \
+                                             f"was not removed from cart as expected."
 
         cart.products[product] = 5
 
         cart.remove_product(product)
-        assert cart.check_product_in_cart(product) is False, f"Product {product} was not removed from cart as expected."
+        assert product not in cart.products, f"Product '{product.name}' " \
+                                             f"was not removed from cart as expected."
 
     def test_cart_clear(self, cart, product_a):
         product = product_a
